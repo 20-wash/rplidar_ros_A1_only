@@ -13,6 +13,8 @@ from launch_ros.actions import Node
 def generate_launch_description():
     channel_type =  LaunchConfiguration('channel_type', default='serial')
     serial_port = LaunchConfiguration('serial_port', default='/dev/ttyUSB0')
+    # serial_port = LaunchConfiguration('serial_port', default='/dev/ttyUSB1')
+    # serial_port = LaunchConfiguration('serial_port', default='/dev/ttyUSB2')
     serial_baudrate = LaunchConfiguration('serial_baudrate', default='115200')
     frame_id = LaunchConfiguration('frame_id', default='laser')
     inverted = LaunchConfiguration('inverted', default='false')
@@ -26,6 +28,8 @@ def generate_launch_description():
             default_value=channel_type,
             description='Specifying channel type of lidar'),
         
+#        DeclareLaunchArgument('serial_port',default_value=serial_port,description='Specifying usb port to connected lidar'),
+                
         DeclareLaunchArgument(
             'serial_port',
             default_value=serial_port,
@@ -50,6 +54,7 @@ def generate_launch_description():
             'angle_compensate',
             default_value=angle_compensate,
             description='Specifying whether or not to enable angle_compensate of scan data'),
+    
         DeclareLaunchArgument(
             'scan_mode',
             default_value=scan_mode,
